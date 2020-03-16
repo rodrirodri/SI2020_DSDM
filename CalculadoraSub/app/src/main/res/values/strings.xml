@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Calculadora Sub</string>
+
+    <string name="subG1">Sub G1</string>
+    <string name="subG2">Sub G2</string>
+    <string name="calculate">Calcular</string>
+    <string name="gradeToKeep">Nota a ser mantida:</string>
+    <string name="gradeSub">Nota da sub</string>
+    <string name="clear">Limpar</string>
+
+</resources>
