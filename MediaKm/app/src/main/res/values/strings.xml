@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Media Km</string>
+
+    <string name="previousKm">Km Anterior</string>
+    <string name="currentKm">Km Atual</string>
+    <string name="fuelAmount">Quantidade Abastecida</string>
+    <string name="kmL">km/L</string>
+    <string name="calculate">Calcular</string>
+    <string name="clear">Limpar</string>
+</resources>

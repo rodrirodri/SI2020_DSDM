@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Calculadora Calorias</string>
+    <string name="weight">Peso</string>
+    <string name="height">Altura</string>
+    <string name="physicalActivityLevel">Nível de Atividades Físicas</string>
+    <string name="levelLight">Leve</string>
+    <string name="levelModerate">Moderado</string>
+    <string name="levelIntense">Intenso</string>
+    <string name="recommendedCalories">Calorias Recomendadas</string>
+    <string name="calculate">Calcular</string>
+</resources>

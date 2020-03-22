@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Contact List</string>
+    <string name="newContact">Novo Contato</string>
+    <string name="contactName">Nome:</string>
+    <string name="contactEmail">E-mail:</string>
+    <string name="save">Salvar</string>
 </resources>
