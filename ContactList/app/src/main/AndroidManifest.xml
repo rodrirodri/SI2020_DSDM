@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.NewContactActivity"></activity>
+
+        <activity android:name=".ui.NewContactActivity"
+            android:label="@string/newContact"/>
+
         <activity android:name=".ui.ListContactsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

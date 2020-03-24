@@ -1,5 +1,6 @@
 package br.edu.unisep.contactlist.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,6 +18,7 @@ class ListContactsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list_contacts)
 
         setupList()
+        setupEvents()
     }
 
     private fun setupList() {
@@ -27,4 +29,14 @@ class ListContactsActivity : AppCompatActivity() {
             DividerItemDecoration.VERTICAL))
     }
 
+    private fun setupEvents() {
+        buttonNewContact.setOnClickListener {
+            openNewContact()
+        }
+    }
+
+    private fun openNewContact() {
+        val intentNewContact = Intent(this, NewContactActivity::class.java)
+        startActivityForResult(intentNewContact, 1)
+    }
 }

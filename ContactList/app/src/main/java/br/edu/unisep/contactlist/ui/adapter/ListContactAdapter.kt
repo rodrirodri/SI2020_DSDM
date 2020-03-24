@@ -10,13 +10,7 @@ import kotlinx.android.synthetic.main.item_contact.view.*
 
 class ListContactAdapter : RecyclerView.Adapter<ListContactAdapter.ContactViewHolder>(){
 
-    private var contacts = listOf<ContactDto>(
-        ContactDto("Aparicio da Silva", "aparicio@gmail.com"),
-        ContactDto("João de Souza", "joao@gmail.com"),
-        ContactDto("Maria Rodrigues", "maria@gmail.com"),
-        ContactDto("Leonardo Guimarães", "leonardo@gmail.com"),
-        ContactDto("Manoel de Lima", "manoel@gmail.com")
-    )
+    private var contacts = listOf<ContactDto>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val inflater = LayoutInflater.from(parent.context)
