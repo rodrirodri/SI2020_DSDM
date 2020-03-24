@@ -8,7 +8,7 @@ import br.edu.unisep.contactlist.R
 import br.edu.unisep.contactlist.domain.dto.ContactDto
 import kotlinx.android.synthetic.main.item_contact.view.*
 
-class ListContactAdapter : RecyclerView.Adapter<ListContactAdapter.ContactViewHolder>(){
+class ListContactAdapter(private val onDelete: (ContactDto) -> Unit) : RecyclerView.Adapter<ListContactAdapter.ContactViewHolder>(){
 
     private var contacts = listOf<ContactDto>()
 
@@ -23,7 +23,7 @@ class ListContactAdapter : RecyclerView.Adapter<ListContactAdapter.ContactViewHo
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = contacts[position]
-        holder.bindItem(contact)
+        holder.bindItem(contact, onDelete)
     }
 
     fun updateContacts(items: List<ContactDto>) {
@@ -33,9 +33,12 @@ class ListContactAdapter : RecyclerView.Adapter<ListContactAdapter.ContactViewHo
 
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItem(contact: ContactDto) {
+        fun bindItem(contact: ContactDto, onDelete: (ContactDto) -> Unit) {
             itemView.textViewName.text = contact.name
             itemView.textViewEmail.text = contact.email
+            itemView.buttonDelete.setOnClickListener {
+                onDelete(contact)
+            }
         }
     }
 }

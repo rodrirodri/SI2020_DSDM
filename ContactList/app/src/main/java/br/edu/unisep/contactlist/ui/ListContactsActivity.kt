@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_list_contacts.*
 
 class ListContactsActivity : AppCompatActivity() {
 
-    private val adapter = ListContactAdapter()
+    private val adapter = ListContactAdapter(this::removeContact)
     private val allContacts = mutableListOf<ContactDto>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,4 +55,10 @@ class ListContactsActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun removeContact(contact: ContactDto) {
+        allContacts.remove(contact)
+        adapter.updateContacts(allContacts)
+    }
+
 }
