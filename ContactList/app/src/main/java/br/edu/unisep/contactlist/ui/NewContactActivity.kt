@@ -2,11 +2,10 @@ package br.edu.unisep.contactlist.ui
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import br.edu.unisep.contactlist.R
 import br.edu.unisep.contactlist.domain.dto.ContactDto
-import kotlinx.android.synthetic.main.activity_list_contacts.*
 import kotlinx.android.synthetic.main.activity_new_contact.*
 
 class NewContactActivity : AppCompatActivity() {
@@ -15,7 +14,7 @@ class NewContactActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_contact)
 
-        buttonNewContact.setOnClickListener { saveContact() }
+        buttonSave.setOnClickListener { saveContact() }
     }
 
     private fun saveContact() {
