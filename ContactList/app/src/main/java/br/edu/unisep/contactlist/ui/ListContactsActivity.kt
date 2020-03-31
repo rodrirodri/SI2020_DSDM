@@ -3,17 +3,23 @@ package br.edu.unisep.contactlist.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.contactlist.R
 import br.edu.unisep.contactlist.domain.dto.ContactDto
 import br.edu.unisep.contactlist.ui.adapter.ListContactAdapter
+import br.edu.unisep.contactlist.ui.viewmodel.ListContactsViewModel
 import kotlinx.android.synthetic.main.activity_list_contacts.*
 
 class ListContactsActivity : AppCompatActivity() {
 
     private val adapter = ListContactAdapter(this::removeContact)
-    private val allContacts = mutableListOf<ContactDto>()
+
+    private val viewModel: ListContactsViewModel by lazy {
+        ViewModelProvider(this).get(ListContactsViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +41,10 @@ class ListContactsActivity : AppCompatActivity() {
         buttonNewContact.setOnClickListener {
             openNewContact()
         }
+
+        viewModel.contacts.observe(this, Observer { allContacts ->
+            adapter.updateContacts(allContacts)
+        })
     }
 
     private fun openNewContact() {
@@ -50,15 +60,13 @@ class ListContactsActivity : AppCompatActivity() {
             val contact = data?.getSerializableExtra("result-contact") as? ContactDto
 
             if (contact != null) {
-                allContacts.add(contact)
-                adapter.updateContacts(allContacts)
+                viewModel.save(contact)
             }
         }
     }
 
     private fun removeContact(contact: ContactDto) {
-        allContacts.remove(contact)
-        adapter.updateContacts(allContacts)
+        viewModel.delete(contact)
     }
 
 }
