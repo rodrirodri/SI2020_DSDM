@@ -22,22 +22,30 @@ class ListTaskAdapter : RecyclerView.Adapter<ListTaskAdapter.TaskViewHolder>() {
     override fun getItemCount() = tasks.size
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        holder.bindItem(tasks[position])
+    }
+
+    fun updateItems(items: List<TaskDto>){
+        this.tasks = items
+        notifyDataSetChanged()
     }
 
     class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItem(task: TaskDto) {
-            itemView.textViewTaskTitle.text = task.title
 
-            if (task.priority == 1) {
-                itemView.iconPriority.imageTintList = ColorStateList.valueOf(itemView.context.getColor(R.color.colorPriorityLow))
-            } else if (task.priority == 2) {
-                itemView.iconPriority.imageTintList = ColorStateList.valueOf(itemView.context.getColor(R.color.colorPriorityMedium))
-            } else {
-                itemView.iconPriority.imageTintList = ColorStateList.valueOf(itemView.context.getColor(R.color.colorPriorityHigh))
+            with(itemView) {
+
+                textViewTaskTitle.text = task.title
+
+                val color = when (task.priority) {
+                    1 -> R.color.colorPriorityLow
+                    2 -> R.color.colorPriorityMedium
+                    else -> R.color.colorPriorityHigh
+                }
+
+                iconPriority.imageTintList = ColorStateList.valueOf(context.getColor(color))
             }
         }
     }
-
 }
