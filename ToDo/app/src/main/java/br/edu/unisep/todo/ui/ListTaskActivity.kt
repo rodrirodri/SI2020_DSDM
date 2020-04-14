@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.todo.R
+import br.edu.unisep.todo.data.db.ToDoDb
 import br.edu.unisep.todo.domain.dto.TaskDto
 import br.edu.unisep.todo.ui.adapter.ListTaskAdapter
 import br.edu.unisep.todo.ui.viewmodel.ListTaskViewModel
