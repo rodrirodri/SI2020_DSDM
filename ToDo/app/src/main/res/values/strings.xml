@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">ToDo</string>
     <string name="menuNewTask">Nova Tarefa</string>
+
+    <string name="taskTitle">Título</string>
+    <string name="taskDescription">Descrição</string>
+
+    <string name="taskPriority">Prioridade</string>
+    <string name="priorityLow">Baixa</string>
+    <string name="priorityMedium">Média</string>
+    <string name="priorityHigh">Alta</string>
+
+    <string name="save">Salvar</string>
+
 </resources>
