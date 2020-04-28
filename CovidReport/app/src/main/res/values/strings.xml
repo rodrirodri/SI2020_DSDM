@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">CovidReport</string>
-    <string name="title_activity_home">Covid Report</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="titleHome">Home</string>
+    <string name="titleCountries">Países</string>
+
+    <string name="confirmedCases">casos confirmados</string>
+    <string name="recoveredCases">casos recuperados</string>
+    <string name="criticalCases">casos críticos</string>
+    <string name="deaths">mortes</string>
+
+    <string name="totalsTitle">Números de casos de Covid-19 pelo mundo</string>
+
 </resources>

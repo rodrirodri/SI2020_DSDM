@@ -2,6 +2,8 @@ package br.edu.unisep.contactlist.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.unisep.contactlist.R
@@ -24,6 +26,12 @@ class ListContactAdapter(private val onDelete: (ContactDto) -> Unit) : RecyclerV
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = contacts[position]
         holder.bindItem(contact, onDelete)
+        holder.itemView.buttonDelete.setOnClickListener {
+            //onDelete(contact)
+            holder.expanded = !holder.expanded
+            notifyItemChanged(position)
+        }
+
     }
 
     fun updateContacts(items: List<ContactDto>) {
@@ -33,12 +41,16 @@ class ListContactAdapter(private val onDelete: (ContactDto) -> Unit) : RecyclerV
 
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        var expanded = false
+
         fun bindItem(contact: ContactDto, onDelete: (ContactDto) -> Unit) {
             itemView.textViewName.text = contact.name
             itemView.textViewEmail.text = contact.email
-            itemView.buttonDelete.setOnClickListener {
-                onDelete(contact)
-            }
+            itemView.textViewEmail.visibility = if (expanded) VISIBLE else GONE
+//            itemView.buttonDelete.setOnClickListener {
+//                //onDelete(contact)
+//                itemView.textViewEmail.visibility = VISIBLE
+//            }
         }
     }
 }

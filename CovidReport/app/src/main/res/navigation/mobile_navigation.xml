@@ -3,23 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigationHome">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="br.edu.unisep.covidreport.ui.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:id="@+id/navigationHome"
+        android:name="br.edu.unisep.covidreport.ui.home.HomeFragment"
+        android:label="@string/titleHome"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="br.edu.unisep.covidreport.ui.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigationCountries"
+        android:name="br.edu.unisep.covidreport.ui.countries.CountriesFragment"
+        android:label="@string/titleCountries"
+        tools:layout="@layout/fragment_countries" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="br.edu.unisep.covidreport.ui.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -1,4 +1,4 @@
-package br.edu.unisep.covidreport.ui.ui.home
+package br.edu.unisep.covidreport.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
