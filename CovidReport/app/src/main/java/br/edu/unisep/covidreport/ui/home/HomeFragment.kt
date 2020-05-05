@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.edu.unisep.covidreport.R
+import br.edu.unisep.covidreport.domain.base.ResultError
+import br.edu.unisep.covidreport.domain.base.ResultSuccess
 import br.edu.unisep.covidreport.domain.dto.TotalDto
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.NumberFormat
@@ -28,8 +30,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel.totals.observe(viewLifecycleOwner, Observer { onTotalsResult(it) })
-        homeViewModel.totalsError.observe(viewLifecycleOwner, Observer { onTotalsError() })
+        homeViewModel.totals.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is ResultSuccess<*> -> onTotalsResult(result.result as TotalDto)
+                is ResultError -> onTotalsError()
+            }
+        })
 
         refreshHome.setOnRefreshListener { this.getTotals() }
 
