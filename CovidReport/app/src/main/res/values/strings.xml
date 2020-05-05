@@ -11,4 +11,6 @@
 
     <string name="totalsTitle">Números de casos de Covid-19 pelo mundo</string>
 
+    <string name="errorMesssageTotals">Não foi possível obter os totais de casos</string>
+
 </resources>
