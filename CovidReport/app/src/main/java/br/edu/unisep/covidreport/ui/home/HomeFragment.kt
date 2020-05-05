@@ -31,6 +31,18 @@ class HomeFragment : Fragment() {
         homeViewModel.totals.observe(viewLifecycleOwner, Observer { onTotalsResult(it) })
         homeViewModel.totalsError.observe(viewLifecycleOwner, Observer { onTotalsError() })
 
+        refreshHome.setOnRefreshListener { this.getTotals() }
+
+        getTotals()
+    }
+
+    private fun getTotals() {
+        viewTotals.visibility = View.INVISIBLE
+        progressBarTotals.visibility = View.VISIBLE
+        textViewErrorTotals.visibility = View.GONE
+
+        refreshHome.isRefreshing = false
+
         homeViewModel.getTotals()
     }
 
