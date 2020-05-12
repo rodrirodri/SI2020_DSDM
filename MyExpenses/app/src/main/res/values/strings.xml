@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MyExpenses</string>
+
+    <string name="newExpense">Nova Despesa</string>
+
+    <string name="expenseDescription">Descrição</string>
+    <string name="expenseValue">Valor</string>
+    <string name="expenseDate">Data</string>
+
+    <string name="currencySymbol">R$ %s</string>
+
+    <string name="save">Salvar</string>
+
 </resources>
