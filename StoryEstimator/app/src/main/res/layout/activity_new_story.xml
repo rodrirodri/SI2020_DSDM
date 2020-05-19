@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.NewStoryActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputTItle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/storyTitle" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputSummary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputTItle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="@string/storySummary"
+            android:lines="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textViewSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/storyPointsDevs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSummary" />
+
+    <LinearLayout
+        android:id="@+id/viewDevNumbers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle">
+
+        <TextView
+            android:id="@+id/textViewDev1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight=".25"
+            android:text="@string/dev1"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textViewDev2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight=".25"
+            android:text="@string/dev2"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textViewDev3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight=".25"
+            android:text="@string/dev3"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textViewDev4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight=".25"
+            android:text="@string/dev4"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/viewDevPoints"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDevNumbers">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDev1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="0.25"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAlignment="center" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDev2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="0.25"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAlignment="center" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDev3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="0.25"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAlignment="center" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDev4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="0.25"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroupPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDevPoints">
+
+        <RadioButton
+            android:id="@+id/radioLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/priorityLow" />
+
+        <RadioButton
+            android:id="@+id/radioMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priorityMedium" />
+
+        <RadioButton
+            android:id="@+id/radioHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/priorityHigh" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">StoryEstimator</string>
+
+    <string name="priorityLow">Prioridade Baixa</string>
+    <string name="priorityMedium">Prioridade Média</string>
+    <string name="priorityHigh">Prioridade Alta</string>
+
+    <string name="newStory">Nova História</string>
+
+    <string name="storyTitle">Título</string>
+    <string name="storySummary">Resumo da História</string>
+    <string name="storyPointsDevs">Pontuação Atribuída pelos Desenvolvedores</string>
+
+    <string name="dev1">#1</string>
+    <string name="dev2">#2</string>
+    <string name="dev3">#3</string>
+    <string name="dev4">#4</string>
+
+    <string name="save">Salvar</string>
+</resources>
