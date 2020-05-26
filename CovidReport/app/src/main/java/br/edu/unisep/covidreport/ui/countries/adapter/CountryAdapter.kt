@@ -1,4 +1,4 @@
-package br.edu.unisep.covidreport.ui.countries
+package br.edu.unisep.covidreport.ui.countries.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,9 @@ class CountryAdapter() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_country, parent, false)
-        return CountryViewHolder(itemView)
+        return CountryViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount() = countries.size

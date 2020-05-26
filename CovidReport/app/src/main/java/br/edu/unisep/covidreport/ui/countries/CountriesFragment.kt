@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.covidreport.R
-import br.edu.unisep.covidreport.domain.base.ResultSuccess
-import br.edu.unisep.covidreport.domain.dto.CountryDto
+import br.edu.unisep.covidreport.domain.base.ApiResult
+import br.edu.unisep.covidreport.ui.countries.adapter.CountryAdapter
 import kotlinx.android.synthetic.main.fragment_countries.*
 
 class CountriesFragment : Fragment() {
@@ -33,10 +33,11 @@ class CountriesFragment : Fragment() {
         setupList()
 
         countriesViewModel.countries.observe(viewLifecycleOwner, Observer { result ->
-            when (result) {
-                is ResultSuccess<*> -> adapter.setCountries(result.result as List<CountryDto>)
+            if (result is ApiResult.Success) {
+                adapter.setCountries(result.result)
             }
         })
+
         countriesViewModel.getCountries()
     }
 
@@ -53,5 +54,4 @@ class CountriesFragment : Fragment() {
             )
         )
     }
-
 }

@@ -2,8 +2,6 @@ package br.edu.unisep.covidreport.domain.repository
 
 import br.edu.unisep.covidreport.data.service.factory.CovidServiceFactory
 import br.edu.unisep.covidreport.domain.base.ApiResult
-import br.edu.unisep.covidreport.domain.base.ResultError
-import br.edu.unisep.covidreport.domain.base.ResultSuccess
 import br.edu.unisep.covidreport.domain.dto.CountryDto
 import br.edu.unisep.covidreport.domain.dto.TotalDto
 
@@ -11,12 +9,12 @@ class CovidRepository {
 
     private val covidService = CovidServiceFactory.getCovidService()
 
-    suspend fun getTotals(): ApiResult {
+    suspend fun getTotals(): ApiResult<TotalDto> {
         return try {
             val response = covidService.getTotals()
             val totalResponse = response.first()
 
-            ResultSuccess(
+            ApiResult.Success(
                 TotalDto(
                     totalResponse.confirmed,
                     totalResponse.recovered,
@@ -25,19 +23,25 @@ class CovidRepository {
                 )
             )
         } catch (e: Exception) {
-            ResultError()
+            ApiResult.Error()
         }
     }
 
-    suspend fun getCountries(): ApiResult {
+    suspend fun getCountries(): ApiResult<List<CountryDto>> {
         return try {
             val response = covidService.listCountries()
 
-            ResultSuccess(response.map { country ->
+            ApiResult.Success(response.map { country ->
                 CountryDto(country.name, country.alpha2code)
             })
         } catch (e: Exception) {
-            ResultError()
+            ApiResult.Error()
         }
     }
+
+    suspend fun getTotalsByCountry(country: CountryDto): ApiResult<TotalDto> {
+
+    }
+
+
 }

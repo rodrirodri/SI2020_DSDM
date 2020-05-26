@@ -12,7 +12,7 @@ class HomeViewModel : ViewModel() {
 
     private val repository = CovidRepository()
 
-    val totals = MutableLiveData<ApiResult>()
+    val totals = MutableLiveData< ApiResult<TotalDto> >()
 
     fun getTotals() {
         viewModelScope.launch {

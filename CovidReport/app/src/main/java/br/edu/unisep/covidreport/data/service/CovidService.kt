@@ -15,4 +15,6 @@ interface CovidService {
     suspend fun listCountries(@Header(HEADER_RAPID_API_HOST) host: String = API_HOST,
                               @Header(HEADER_RAPID_API_KEY) apiKey: String = API_KEY): List<CountryResponse>
 
+    // getTotalsByCountry
+
 }
