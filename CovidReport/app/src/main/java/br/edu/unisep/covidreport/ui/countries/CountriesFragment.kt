@@ -4,28 +4,54 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.covidreport.R
+import br.edu.unisep.covidreport.domain.base.ResultSuccess
+import br.edu.unisep.covidreport.domain.dto.CountryDto
+import kotlinx.android.synthetic.main.fragment_countries.*
 
 class CountriesFragment : Fragment() {
 
-    private lateinit var countriesViewModel: CountriesViewModel
+    private lateinit var adapter: CountryAdapter
+    private val countriesViewModel: CountriesViewModel by lazy {
+        ViewModelProvider(this).get(CountriesViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        countriesViewModel =
-            ViewModelProviders.of(this).get(CountriesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_countries, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        countriesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+    ) = inflater.inflate(R.layout.fragment_countries, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupList()
+
+        countriesViewModel.countries.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is ResultSuccess<*> -> adapter.setCountries(result.result as List<CountryDto>)
+            }
         })
-        return root
+        countriesViewModel.getCountries()
     }
+
+    private fun setupList() {
+        adapter = CountryAdapter()
+
+        listCountries.adapter = adapter
+        listCountries.layoutManager = LinearLayoutManager(
+            context, LinearLayoutManager.VERTICAL, false
+        )
+        listCountries.addItemDecoration(
+            DividerItemDecoration(
+                context, DividerItemDecoration.VERTICAL
+            )
+        )
+    }
+
 }
