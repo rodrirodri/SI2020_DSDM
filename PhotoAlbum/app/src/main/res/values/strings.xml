@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Photo Album</string>
+    <string name="takePicture">Tirar Foto</string>
+</resources>
