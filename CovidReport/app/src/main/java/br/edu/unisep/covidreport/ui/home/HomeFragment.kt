@@ -42,10 +42,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getTotals() {
-        viewTotals.visibility = View.INVISIBLE
         progressBarTotals.visibility = View.VISIBLE
-        textViewErrorTotals.visibility = View.GONE
-
         refreshHome.isRefreshing = false
 
         homeViewModel.getTotals()
@@ -59,13 +56,11 @@ class HomeFragment : Fragment() {
         textViewRecovered.text = formatter.format(totals.recovered)
         textViewDeaths.text = formatter.format(totals.deaths)
 
-        viewTotals.visibility = View.VISIBLE
-        progressBarTotals.visibility = View.GONE
+        progressBarTotals.visibility = View.INVISIBLE
     }
 
     private fun onTotalsError() {
-        progressBarTotals.visibility = View.GONE
-        textViewErrorTotals.visibility = View.VISIBLE
+        progressBarTotals.visibility = View.INVISIBLE
     }
 
 }

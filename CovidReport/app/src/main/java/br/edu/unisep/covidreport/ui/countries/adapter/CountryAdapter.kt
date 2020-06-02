@@ -8,7 +8,7 @@ import br.edu.unisep.covidreport.R
 import br.edu.unisep.covidreport.domain.dto.CountryDto
 import kotlinx.android.synthetic.main.item_country.view.*
 
-class CountryAdapter() :
+class CountryAdapter(private val onItemClick: (CountryDto) -> Unit) :
     RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     private var countries: List<CountryDto> = listOf()
@@ -26,6 +26,8 @@ class CountryAdapter() :
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val country = countries[position]
         holder.itemView.textViewCountry.text = country.name
+
+        holder.itemView.setOnClickListener { onItemClick(country) }
     }
 
     fun setCountries(countries: List<CountryDto>) {

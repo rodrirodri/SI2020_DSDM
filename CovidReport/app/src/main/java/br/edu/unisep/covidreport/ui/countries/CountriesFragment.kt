@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.unisep.covidreport.R
 import br.edu.unisep.covidreport.domain.base.ApiResult
+import br.edu.unisep.covidreport.domain.dto.CountryDto
 import br.edu.unisep.covidreport.ui.countries.adapter.CountryAdapter
 import kotlinx.android.synthetic.main.fragment_countries.*
 
@@ -42,7 +43,7 @@ class CountriesFragment : Fragment() {
     }
 
     private fun setupList() {
-        adapter = CountryAdapter()
+        adapter = CountryAdapter(this::showCountryTotals)
 
         listCountries.adapter = adapter
         listCountries.layoutManager = LinearLayoutManager(
@@ -54,4 +55,9 @@ class CountriesFragment : Fragment() {
             )
         )
     }
+
+    private fun showCountryTotals(country: CountryDto) {
+        CountryDetailsDialog(country).show(parentFragmentManager, null)
+    }
+
 }

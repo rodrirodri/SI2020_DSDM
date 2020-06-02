@@ -15,18 +15,17 @@
             android:id="@+id/textViewTotalTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:text="@string/totalsTitle"
-            android:textAlignment="center"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/progressBarTotals"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardTotals"
+            android:id="@+id/cardConfirmed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -39,17 +38,16 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewTotalTitle">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/viewTotals"
+                android:id="@+id/viewTotalConfirmed"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible"
-                tools:visibility="visible">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textViewTotalCases"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="48sp"
+                    android:text="@string/defaultCaseValue"
+                    android:textSize="36sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -57,123 +55,171 @@
 
                 <TextView
                     android:id="@+id/labelTotalCases"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/confirmedCases"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTotalCases" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideFirst"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.33" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideSecond"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.67" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRecovered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="8dp"
+            app:contentPadding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardConfirmed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewTotalRecovered"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textViewRecovered"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="8dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/guideFirst"
+                    android:text="@string/defaultCaseValue"
+                    android:textSize="36sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/labelTotalCases"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="999.999" />
 
                 <TextView
                     android:id="@+id/labelRecovered"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/recoveredCases"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="@+id/textViewRecovered"
-                    app:layout_constraintStart_toStartOf="@+id/textViewRecovered"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewRecovered" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardCritical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="8dp"
+            app:contentPadding="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideMiddle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardRecovered">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewTotalCritical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textViewCritical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/guideSecond"
-                    app:layout_constraintStart_toStartOf="@+id/guideFirst"
-                    app:layout_constraintTop_toTopOf="@+id/textViewRecovered"
+                    android:text="@string/defaultCaseValue"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="999.999" />
 
                 <TextView
                     android:id="@+id/labelCritical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/criticalCases"
-                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/textViewCritical"
                     app:layout_constraintStart_toStartOf="@+id/textViewCritical"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCritical" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDeaths"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="8dp"
+            app:contentPadding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideMiddle"
+            app:layout_constraintTop_toBottomOf="@+id/cardRecovered">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewTotalDeaths"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textViewDeaths"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:text="@string/defaultCaseValue"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideSecond"
-                    app:layout_constraintTop_toTopOf="@+id/textViewCritical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="999.999" />
 
                 <TextView
                     android:id="@+id/labelDeaths"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/deaths"
-                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textViewDeaths"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDeaths" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
         <ProgressBar
             android:id="@+id/progressBarTotals"
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:elevation="2dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/cardTotals"
-            app:layout_constraintEnd_toEndOf="@+id/cardTotals"
-            app:layout_constraintStart_toStartOf="@+id/cardTotals"
-            app:layout_constraintTop_toTopOf="@+id/cardTotals" />
-
-        <TextView
-            android:id="@+id/textViewErrorTotals"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:elevation="2dp"
-            android:text="@string/errorMesssageTotals"
-            android:textAlignment="center"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/cardTotals"
-            app:layout_constraintEnd_toEndOf="@+id/cardTotals"
-            app:layout_constraintStart_toStartOf="@+id/cardTotals"
-            app:layout_constraintTop_toTopOf="@+id/cardTotals" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTotalTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewTotalTitle"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
