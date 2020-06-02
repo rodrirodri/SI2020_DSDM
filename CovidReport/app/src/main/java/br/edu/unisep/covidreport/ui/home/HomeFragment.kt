@@ -9,7 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.edu.unisep.covidreport.R
 import br.edu.unisep.covidreport.domain.base.ApiResult
+import br.edu.unisep.covidreport.domain.dto.CountryDto
 import br.edu.unisep.covidreport.domain.dto.TotalDto
+import br.edu.unisep.covidreport.helper.PreferencesHelper
+import br.edu.unisep.covidreport.ui.countries.CountryDetailsDialog
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.NumberFormat
 import java.util.*
@@ -38,7 +41,26 @@ class HomeFragment : Fragment() {
 
         refreshHome.setOnRefreshListener { this.getTotals() }
 
+        setupFavorite()
+
         getTotals()
+    }
+
+    private fun setupFavorite() {
+        val prefsHelper = PreferencesHelper.getInstance(requireContext())
+        val country = prefsHelper.getCountry()
+
+        if (country != null) {
+            cardFavorite.visibility = View.VISIBLE
+            tvCountry.text = country
+
+            cardFavorite.setOnClickListener {
+                val dialog = CountryDetailsDialog(CountryDto(country, null))
+                dialog.show(parentFragmentManager, null)
+            }
+        } else {
+            cardFavorite.visibility = View.GONE
+        }
     }
 
     private fun getTotals() {
