@@ -12,6 +12,10 @@ class PreferencesHelper(private val context: Context) {
 
     fun getCountry() = prefs.getString("country", null)
 
+    fun clearCountry() {
+        prefs.edit().remove("country").apply()
+    }
+
     companion object {
 
         private var instance: PreferencesHelper? = null
