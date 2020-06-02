@@ -20,8 +20,8 @@
             android:layout_marginEnd="16dp"
             android:text="@string/totalsTitle"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/progressBarTotals"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
@@ -213,14 +213,74 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_marginEnd="24dp"
             android:elevation="2dp"
             android:visibility="gone"
-            android:layout_marginEnd="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/textViewTotalTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textViewTotalTitle"
             tools:visibility="visible" />
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardFavorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardCritical"
+            app:cardCornerRadius="8dp"
+            app:contentPadding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/imageViewFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_favorite" />
+
+                <TextView
+                    android:id="@+id/textViewMyFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/favoriteCountry"
+                    android:textAllCaps="true"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewFavorite"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCountry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Brazil"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="@+id/textViewMyFavorite"
+                    app:layout_constraintTop_toBottomOf="@id/textViewMyFavorite" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_chevron_right" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
