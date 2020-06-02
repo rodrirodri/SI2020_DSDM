@@ -1,5 +1,7 @@
 package br.edu.unisep.covidreport.domain.repository
 
+import br.edu.unisep.covidreport.data.service.API_HOST
+import br.edu.unisep.covidreport.data.service.API_KEY
 import br.edu.unisep.covidreport.data.service.factory.CovidServiceFactory
 import br.edu.unisep.covidreport.domain.base.ApiResult
 import br.edu.unisep.covidreport.domain.dto.CountryDto
@@ -40,8 +42,20 @@ class CovidRepository {
     }
 
     suspend fun getTotalsByCountry(country: CountryDto): ApiResult<TotalDto> {
+        return try {
+            val response = covidService.getTotalsByCountry(country.name)
+            val totalResponse = response.first()
 
+            ApiResult.Success(
+                TotalDto(
+                    totalResponse.confirmed,
+                    totalResponse.recovered,
+                    totalResponse.critical,
+                    totalResponse.deaths
+                )
+            )
+        } catch (e: Exception) {
+            ApiResult.Error()
+        }
     }
-
-
 }
