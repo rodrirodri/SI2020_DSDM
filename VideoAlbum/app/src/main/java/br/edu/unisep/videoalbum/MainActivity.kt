@@ -20,6 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         buttonRecord.setOnClickListener { recordVideo() }
+        imageViewThumb.setOnClickListener { playVideo() }
+    }
+
+    private fun playVideo() {
+        val intent = VideoPlayerActivity.newIntent(this, videoUri.toString())
+        startActivity(intent)
     }
 
     private fun recordVideo() {
