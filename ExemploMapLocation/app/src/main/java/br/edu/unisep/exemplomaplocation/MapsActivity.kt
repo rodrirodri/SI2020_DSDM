@@ -3,10 +3,10 @@ package br.edu.unisep.exemplomaplocation
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.location.Location
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -27,7 +27,6 @@ class MapsActivity : AppCompatActivity() {
     }
 
     private fun setupPermissions() {
-
         if (checkSelfPermission(ACCESS_FINE_LOCATION) == PERMISSION_GRANTED &&
             checkSelfPermission(ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED
         ) {
@@ -52,11 +51,20 @@ class MapsActivity : AppCompatActivity() {
     private fun getUserLocation() {
         locationClient = LocationServices.getFusedLocationProviderClient(this)
         locationClient.lastLocation.addOnSuccessListener { location ->
-            if (location != null) {
-                val pos = LatLng(location.latitude, location.longitude)
-                mMap.addMarker(MarkerOptions().position(pos))
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 12f))
-            }
+            addMarker(location)
+        }
+
+        val locationRequest = LocationRequest()
+        locationRequest.interval = 10000
+
+        locationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+    }
+
+    private fun addMarker(location: Location?) {
+        if (location != null) {
+            val pos = LatLng(location.latitude, location.longitude)
+            mMap.addMarker(MarkerOptions().position(pos))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15f))
         }
     }
 
@@ -73,4 +81,17 @@ class MapsActivity : AppCompatActivity() {
             }
         }
     }
+
+    private val locationCallback = object:LocationCallback() {
+
+        override fun onLocationResult(result: LocationResult?) {
+            super.onLocationResult(result)
+
+            if (result != null) {
+                mMap.clear()
+                addMarker(result.lastLocation)
+            }
+        }
+    }
+
 }
