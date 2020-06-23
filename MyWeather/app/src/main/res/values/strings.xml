@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My Weather</string>
+    <string name="title_home">Home</string>
+    <string name="title_menu_map">Mapa</string>
+    <string name="title_map">Escolha uma localização</string>
+
+    <string name="viewClimate">Ver clima</string>
+
+    <string name="weatherClear">Tempo aberto</string>
+    <string name="weatherCloudy">Tempo encoberto</string>
+    <string name="weatherDrizzle">Garoa</string>
+    <string name="weatherRain">Chuva</string>
+    <string name="weatherSnow">Neve</string>
+    <string name="weatherSleet">Granizo</string>
+    <string name="weatherFog">Nevoeiro</string>
+    <string name="weatherOvercast">Nublado</string>
+    <string name="weatherThunderstorm">Tempestade</string>
+
+    <string name="sunrise">Amanhecer</string>
+    <string name="sunset">Pôr do Sol</string>
+    <string name="windSpeed">Velocidade do Vento</string>
+    <string name="uvIndex">Índice UV</string>
+
+    <string name="defaultTime">00:00h</string>
+    <string name="defaultSpeed">0 km/h</string>
+    <string name="defaultUV">0.0</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
